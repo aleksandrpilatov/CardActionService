@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 namespace CardActionService.Controllers
 {
     [ApiController]
-    [Route("api/users/{userId}/cards/{cardNumber}")]
+    [Route("api/[controller]")]
     public class CardActionsController(ICardService cardService, ICardActionService cardActionService, ILogger<CardActionsController> logger) : ControllerBase
     {     
-        [HttpGet("actions")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAllowedActions([FromRoute] GetCardActionsRequest request)
+        public async Task<IActionResult> GetAllowedActions([FromQuery] GetCardActionsRequest request)
         {
             var cardDetails = await cardService.GetCardDetailsAsync(request.UserId!, request.CardNumber!);
 
