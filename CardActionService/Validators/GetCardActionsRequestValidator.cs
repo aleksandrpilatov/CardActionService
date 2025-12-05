@@ -7,8 +7,8 @@ namespace CardActionService.Validators
     {
         public GetCardActionsRequestValidator()
         {
-            RuleFor(x => x.UserId).NotEmpty().WithMessage("EST: My FluentValidation is working!");
-            RuleFor(x => x.CardNumber).NotEmpty().WithMessage("Card Number is required!!.");
+            RuleFor(x => x.UserId).NotEmpty().WithMessage("User ID is required.");
+            RuleFor(x => x.CardNumber).NotEmpty().WithMessage("Card Number is required.");
         }
     }
 }
